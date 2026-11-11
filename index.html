@@ -14,40 +14,45 @@
       --grey: #828282;
       --grey-dark: #424242;
       --border: #e8e8e8;
+      --pad: clamp(20px, 5vw, 96px);
     }
 
     * { box-sizing: border-box; }
+
+    /* Everything is sized in rem, so the whole page scales up on big screens. */
+    html { font-size: clamp(16px, 1.05vw, 21px); }
 
     body {
       margin: 0;
       color: var(--text);
       background: var(--bg);
-      font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font: 400 1rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
     .wrapper {
-      max-width: 800px;
+      width: 100%;
+      max-width: 1800px;
       margin: 0 auto;
-      padding: 0 15px;
+      padding: 0 var(--pad);
     }
 
     a { color: var(--brand); text-decoration: none; }
     a:visited { color: var(--visited); }
     a:hover { color: var(--text); text-decoration: underline; }
 
-    h1, h2, h3 { font-weight: 400; margin: 0 0 15px; }
-    h2 { font-size: 24px; }
-    h3 { font-size: 19px; }
-    p, ul { margin: 0 0 15px; }
-    ul { padding-left: 30px; }
-    hr { border: 0; border-top: 1px solid var(--border); margin: 30px 0; }
+    h1, h2, h3 { font-weight: 400; margin: 0 0 1rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.2rem; }
+    p, ul { margin: 0 0 1rem; }
+    ul { padding-left: 1.6rem; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
 
     /* ---------- Header ---------- */
     .site-header {
       border-top: 5px solid var(--grey-dark);
       border-bottom: 1px solid var(--border);
-      min-height: 56px;
+      min-height: 3.5rem;
     }
     .site-header .wrapper {
       display: flex;
@@ -55,19 +60,19 @@
       justify-content: space-between;
     }
     .site-title {
-      font-size: 26px;
+      font-size: 1.65rem;
       font-weight: 300;
-      line-height: 54px;
+      line-height: 3.4rem;
       letter-spacing: -1px;
       color: var(--grey-dark) !important;
     }
     .site-title:hover { text-decoration: none; }
 
-    .site-nav { position: relative; line-height: 54px; }
+    .site-nav { position: relative; line-height: 3.4rem; }
     .site-nav .page-link {
       color: var(--text);
       line-height: 1.5;
-      margin-left: 20px;
+      margin-left: 1.5rem;
     }
     .site-nav .page-link:first-child { margin-left: 0; }
     .site-nav .page-link:hover { color: var(--brand); text-decoration: none; }
@@ -108,42 +113,73 @@
     }
 
     /* ---------- Content ---------- */
-    main { padding: 30px 0 15px; min-height: 60vh; }
+    main { padding-top: 3rem; padding-bottom: 2rem; min-height: 65vh; }
 
     /* With JavaScript on, only the selected section shows.
        Without JavaScript, everything shows so nothing is lost. */
     .js .page { display: none; }
     .js .page.active { display: block; }
 
+    /* Home: photo on the left, text on the right */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: clamp(240px, 24vw, 460px) minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 72px);
+      align-items: start;
+    }
     .photo {
-      float: left;
-      width: 300px;
-      height: 385px;
-      margin: 0 30px 15px 0;
+      width: 100%;
+      aspect-ratio: 300 / 385;
       background: var(--border);
       color: var(--grey);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 0.9rem;
     }
-    img.photo { object-fit: cover; }
-    .intro h2 { font-weight: 700; font-size: 28px; line-height: 1.4; }
-    .clearfix::after { content: ""; display: block; clear: both; }
+    img.photo { object-fit: cover; display: block; }
+    .intro-text { max-width: 46rem; }
+    .intro-text h2 { font-weight: 700; font-size: 2rem; line-height: 1.3; }
+    .intro-text p { font-size: 1.05rem; line-height: 1.6; }
 
-    @media (max-width: 600px) {
-      .photo { float: none; width: 100%; max-width: 300px; margin: 0 0 20px; }
+    @media (max-width: 760px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      .photo { max-width: 300px; }
     }
 
-    .entry-meta { color: var(--grey); margin: 0 0 4px; }
+    /* CV: two columns on wide screens */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: clamp(32px, 6vw, 112px);
+    }
+    @media (max-width: 800px) {
+      .two-col { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    /* Projects and Hobbies: card grids that fill the width */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 1.4rem 1.5rem 0.6rem;
+    }
+    .card h3 { margin-bottom: 0.25rem; }
+
+    .entry-meta { color: var(--grey); margin: 0 0 0.25rem; }
 
     /* ---------- Footer ---------- */
     .site-footer {
       border-top: 1px solid var(--border);
-      padding: 30px 0;
-      margin-top: 15px;
+      padding: 2rem 0;
+      margin-top: 1rem;
       color: var(--grey);
-      font-size: 14px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -172,25 +208,30 @@
   <main class="wrapper">
 
     <!-- HOME (shown by default, and when you click your name) -->
-    <section id="home" class="page active intro clearfix">
-      <!-- To use a real photo, upload it to your repo and replace the div below with:
-           <img class="photo" src="headshot.jpg" alt="Your Name"> -->
-      <div class="photo">Your photo here</div>
-      <h2>Greetings!</h2>
-      <p>
-        My name is <strong>Your Name</strong>. Write a few sentences here about who you are,
-        what you do, and where you work or study. Add <a href="https://example.com">links</a> to your
-        organization or anything else you want people to click.
-      </p>
-      <p>
-        Add another paragraph about what you are working on right now, what you are
-        interested in, or how people can get in touch.
-      </p>
-      <p>
-        <a href="mailto:you@example.com">Email</a> &middot;
-        <a href="https://github.com/your-username">GitHub</a> &middot;
-        <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
-      </p>
+    <section id="home" class="page active">
+      <div class="intro-grid">
+        <!-- To use a real photo, upload it to your repo and replace the div below with:
+             <img class="photo" src="headshot.jpg" alt="Your Name"> -->
+        <div class="photo">Your photo here</div>
+
+        <div class="intro-text">
+          <h2>Greetings!</h2>
+          <p>
+            My name is <strong>Your Name</strong>. Write a few sentences here about who you are,
+            what you do, and where you work or study. Add <a href="https://example.com">links</a> to your
+            organization or anything else you want people to click.
+          </p>
+          <p>
+            Add another paragraph about what you are working on right now, what you are
+            interested in, or how people can get in touch.
+          </p>
+          <p>
+            <a href="mailto:you@example.com">Email</a> &middot;
+            <a href="https://github.com/your-username">GitHub</a> &middot;
+            <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- CV -->
@@ -200,29 +241,31 @@
 
       <hr>
 
-      <h3>Experience</h3>
-      <p class="entry-meta">Company Name &middot; 2022 &ndash; Present</p>
-      <ul>
-        <li>Job title and a one-line description of your role.</li>
-        <li>A key accomplishment or responsibility.</li>
-      </ul>
-      <p class="entry-meta">Previous Company &middot; 2019 &ndash; 2022</p>
-      <ul>
-        <li>Job title and a one-line description of your role.</li>
-      </ul>
+      <div class="two-col">
+        <div>
+          <h3>Experience</h3>
+          <p class="entry-meta">Company Name &middot; 2022 &ndash; Present</p>
+          <ul>
+            <li>Job title and a one-line description of your role.</li>
+            <li>A key accomplishment or responsibility.</li>
+          </ul>
+          <p class="entry-meta">Previous Company &middot; 2019 &ndash; 2022</p>
+          <ul>
+            <li>Job title and a one-line description of your role.</li>
+          </ul>
+        </div>
 
-      <hr>
+        <div>
+          <h3>Education</h3>
+          <p class="entry-meta">University Name &middot; 2015 &ndash; 2019</p>
+          <ul>
+            <li>Degree, major, and any honors.</li>
+          </ul>
 
-      <h3>Education</h3>
-      <p class="entry-meta">University Name &middot; 2015 &ndash; 2019</p>
-      <ul>
-        <li>Degree, major, and any honors.</li>
-      </ul>
-
-      <hr>
-
-      <h3>Skills</h3>
-      <p>Skill one, skill two, skill three, skill four.</p>
+          <h3 style="margin-top:2rem">Skills</h3>
+          <p>Skill one, skill two, skill three, skill four.</p>
+        </div>
+      </div>
     </section>
 
     <!-- PROJECTS -->
@@ -231,17 +274,23 @@
 
       <hr>
 
-      <h3><a href="https://github.com/your-username/project-one">Project One</a></h3>
-      <p class="entry-meta">2025</p>
-      <p>A short description of what the project is, what you built, and what you learned.</p>
-
-      <h3><a href="https://github.com/your-username/project-two">Project Two</a></h3>
-      <p class="entry-meta">2024</p>
-      <p>A short description of what the project is, what you built, and what you learned.</p>
-
-      <h3><a href="https://github.com/your-username/project-three">Project Three</a></h3>
-      <p class="entry-meta">2023</p>
-      <p>A short description of what the project is, what you built, and what you learned.</p>
+      <div class="cards">
+        <div class="card">
+          <h3><a href="https://github.com/your-username/project-one">Project One</a></h3>
+          <p class="entry-meta">2025</p>
+          <p>A short description of what the project is, what you built, and what you learned.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://github.com/your-username/project-two">Project Two</a></h3>
+          <p class="entry-meta">2024</p>
+          <p>A short description of what the project is, what you built, and what you learned.</p>
+        </div>
+        <div class="card">
+          <h3><a href="https://github.com/your-username/project-three">Project Three</a></h3>
+          <p class="entry-meta">2023</p>
+          <p>A short description of what the project is, what you built, and what you learned.</p>
+        </div>
+      </div>
     </section>
 
     <!-- HOBBIES -->
@@ -251,11 +300,21 @@
       <hr>
 
       <p>A line or two about what you do outside of work.</p>
-      <ul>
-        <li><strong>Hobby one:</strong> a sentence about why you enjoy it.</li>
-        <li><strong>Hobby two:</strong> a sentence about why you enjoy it.</li>
-        <li><strong>Hobby three:</strong> a sentence about why you enjoy it.</li>
-      </ul>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Hobby One</h3>
+          <p>A sentence or two about why you enjoy it.</p>
+        </div>
+        <div class="card">
+          <h3>Hobby Two</h3>
+          <p>A sentence or two about why you enjoy it.</p>
+        </div>
+        <div class="card">
+          <h3>Hobby Three</h3>
+          <p>A sentence or two about why you enjoy it.</p>
+        </div>
+      </div>
     </section>
 
   </main>
