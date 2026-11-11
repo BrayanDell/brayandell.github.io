@@ -1,1 +1,292 @@
-<h1> Hello </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --text: #111111;
+      --bg: #fdfdfd;
+      --brand: #2a7ae2;
+      --visited: #1756a9;
+      --grey: #828282;
+      --grey-dark: #424242;
+      --border: #e8e8e8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    a { color: var(--brand); text-decoration: none; }
+    a:visited { color: var(--visited); }
+    a:hover { color: var(--text); text-decoration: underline; }
+
+    h1, h2, h3 { font-weight: 400; margin: 0 0 15px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 19px; }
+    p, ul { margin: 0 0 15px; }
+    ul { padding-left: 30px; }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 30px 0; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      border-top: 5px solid var(--grey-dark);
+      border-bottom: 1px solid var(--border);
+      min-height: 56px;
+    }
+    .site-header .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-title {
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 54px;
+      letter-spacing: -1px;
+      color: var(--grey-dark) !important;
+    }
+    .site-title:hover { text-decoration: none; }
+
+    .site-nav { position: relative; line-height: 54px; }
+    .site-nav .page-link {
+      color: var(--text);
+      line-height: 1.5;
+      margin-left: 20px;
+    }
+    .site-nav .page-link:first-child { margin-left: 0; }
+    .site-nav .page-link:hover { color: var(--brand); text-decoration: none; }
+    .site-nav .page-link.active { color: var(--brand); }
+    .nav-trigger { display: none; }
+    .menu-icon { display: none; }
+
+    @media (max-width: 600px) {
+      .menu-icon {
+        display: block;
+        width: 36px;
+        height: 26px;
+        line-height: 0;
+        padding-top: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .menu-icon svg { fill: var(--grey-dark); }
+      .site-nav .trigger {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        z-index: 5;
+        min-width: 140px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        text-align: right;
+        line-height: 1.5;
+      }
+      .nav-trigger:checked ~ .trigger { display: block; padding-bottom: 5px; }
+      .site-nav .page-link {
+        display: block;
+        margin: 0;
+        padding: 5px 15px;
+      }
+    }
+
+    /* ---------- Content ---------- */
+    main { padding: 30px 0 15px; min-height: 60vh; }
+
+    /* With JavaScript on, only the selected section shows.
+       Without JavaScript, everything shows so nothing is lost. */
+    .js .page { display: none; }
+    .js .page.active { display: block; }
+
+    .photo {
+      float: left;
+      width: 300px;
+      height: 385px;
+      margin: 0 30px 15px 0;
+      background: var(--border);
+      color: var(--grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    img.photo { object-fit: cover; }
+    .intro h2 { font-weight: 700; font-size: 28px; line-height: 1.4; }
+    .clearfix::after { content: ""; display: block; clear: both; }
+
+    @media (max-width: 600px) {
+      .photo { float: none; width: 100%; max-width: 300px; margin: 0 0 20px; }
+    }
+
+    .entry-meta { color: var(--grey); margin: 0 0 4px; }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      margin-top: 15px;
+      color: var(--grey);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrapper">
+      <a class="site-title" href="#home">Your Name</a>
+
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger" class="menu-icon" aria-label="Menu">
+          <svg viewBox="0 0 18 15" width="18" height="15">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </label>
+        <div class="trigger">
+          <a class="page-link" href="#cv">CV</a>
+          <a class="page-link" href="#projects">Projects</a>
+          <a class="page-link" href="#hobbies">Hobbies</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+
+    <!-- HOME (shown by default, and when you click your name) -->
+    <section id="home" class="page active intro clearfix">
+      <!-- To use a real photo, upload it to your repo and replace the div below with:
+           <img class="photo" src="headshot.jpg" alt="Your Name"> -->
+      <div class="photo">Your photo here</div>
+      <h2>Greetings!</h2>
+      <p>
+        My name is <strong>Your Name</strong>. Write a few sentences here about who you are,
+        what you do, and where you work or study. Add <a href="https://example.com">links</a> to your
+        organization or anything else you want people to click.
+      </p>
+      <p>
+        Add another paragraph about what you are working on right now, what you are
+        interested in, or how people can get in touch.
+      </p>
+      <p>
+        <a href="mailto:you@example.com">Email</a> &middot;
+        <a href="https://github.com/your-username">GitHub</a> &middot;
+        <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+      </p>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="page">
+      <h2>CV</h2>
+      <p><a href="cv.pdf">Download my full CV (PDF)</a></p>
+
+      <hr>
+
+      <h3>Experience</h3>
+      <p class="entry-meta">Company Name &middot; 2022 &ndash; Present</p>
+      <ul>
+        <li>Job title and a one-line description of your role.</li>
+        <li>A key accomplishment or responsibility.</li>
+      </ul>
+      <p class="entry-meta">Previous Company &middot; 2019 &ndash; 2022</p>
+      <ul>
+        <li>Job title and a one-line description of your role.</li>
+      </ul>
+
+      <hr>
+
+      <h3>Education</h3>
+      <p class="entry-meta">University Name &middot; 2015 &ndash; 2019</p>
+      <ul>
+        <li>Degree, major, and any honors.</li>
+      </ul>
+
+      <hr>
+
+      <h3>Skills</h3>
+      <p>Skill one, skill two, skill three, skill four.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page">
+      <h2>Projects</h2>
+
+      <hr>
+
+      <h3><a href="https://github.com/your-username/project-one">Project One</a></h3>
+      <p class="entry-meta">2025</p>
+      <p>A short description of what the project is, what you built, and what you learned.</p>
+
+      <h3><a href="https://github.com/your-username/project-two">Project Two</a></h3>
+      <p class="entry-meta">2024</p>
+      <p>A short description of what the project is, what you built, and what you learned.</p>
+
+      <h3><a href="https://github.com/your-username/project-three">Project Three</a></h3>
+      <p class="entry-meta">2023</p>
+      <p>A short description of what the project is, what you built, and what you learned.</p>
+    </section>
+
+    <!-- HOBBIES -->
+    <section id="hobbies" class="page">
+      <h2>Hobbies</h2>
+
+      <hr>
+
+      <p>A line or two about what you do outside of work.</p>
+      <ul>
+        <li><strong>Hobby one:</strong> a sentence about why you enjoy it.</li>
+        <li><strong>Hobby two:</strong> a sentence about why you enjoy it.</li>
+        <li><strong>Hobby three:</strong> a sentence about why you enjoy it.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">&copy; 2026 Your Name &middot; Personal website</div>
+  </footer>
+
+  <script>
+    (function () {
+      var pages = ['home', 'cv', 'projects', 'hobbies'];
+
+      function show() {
+        var id = location.hash.replace('#', '');
+        if (pages.indexOf(id) === -1) id = 'home';
+
+        pages.forEach(function (p) {
+          document.getElementById(p).classList.toggle('active', p === id);
+        });
+        document.querySelectorAll('.page-link').forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+
+        document.getElementById('nav-trigger').checked = false; // close mobile menu
+        window.scrollTo(0, 0);
+      }
+
+      window.addEventListener('hashchange', show);
+      show();
+    })();
+  </script>
+
+</body>
+</html>
