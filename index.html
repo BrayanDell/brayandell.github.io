@@ -177,58 +177,33 @@
     }
     .card h3 { margin-bottom: 0.25rem; }
     /* Project cards: image, description, expandable "Read more" */
-
 .cards.projects { grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr)); }
-
 .project-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-
 .project-card .project-img {
-
   width: 100%;
-
   aspect-ratio: 16 / 9;
-
   object-fit: cover;
-
   display: block;
-
   background: var(--border);
-
 }
 
 .project-card .project-body { padding: 1.2rem 1.5rem 1.3rem; }
-
 .project-card details { margin-top: 0.25rem; }
-
 .project-card summary {
-
   color: var(--brand);
-
   cursor: pointer;
-
   font-weight: 500;
-
   list-style: none;
-
 }
 
 .project-card summary::-webkit-details-marker { display: none; }
-
 .project-card summary::after { content: " \2192"; }
-
 .project-card summary:hover { color: var(--text); }
-
 .project-card details[open] summary { margin-bottom: 0.75rem; }
-
 .project-card details[open] summary::after { content: " \2191"; }
-
 .project-card details[open] summary .more-label { display: none; }
-
 .project-card details[open] summary::before { content: "Show less"; }
-
 .project-card .project-more p:last-child { margin-bottom: 0; }
-
-    
     .entry-meta { color: var(--grey); margin: 0 0 0.25rem; }
 
     /* ---------- Footer ---------- */
@@ -327,111 +302,58 @@
     <!-- PROJECTS -->
     <section id="projects" class="page">
       <h2>Projects</h2>
-
       <hr>
-
       <div class="cards projects">
-
- 
-
   <div class="card project-card">
-
     <img class="project-img" src="project-one.jpg" alt="Project One screenshot">
-
     <div class="project-body">
-
       <h3>Project One</h3>
-
       <p class="entry-meta">2025</p>
-
       <p>A short description of what the project is, what you built, and what you learned.</p>
-
       <details>
-
         <summary><span class="more-label">Read more</span></summary>
-
         <div class="project-more">
-
           <p>The longer write-up goes here.</p>
-
           <p><a href=https://github.com/your-username/project-one>View on GitHub</a></p>
-
         </div>
-
       </details>
-
     </div>
-
   </div>
 
- 
-
   <div class="card project-card">
-
     <img class="project-img" src="project-two.jpg" alt="Project Two screenshot">
-
     <div class="project-body">
-
       <h3>Project Two</h3>
-
       <p class="entry-meta">2024</p>
-
       <p>A short description of what the project is, what you built, and what you learned.</p>
-
       <details>
-
         <summary><span class="more-label">Read more</span></summary>
-
         <div class="project-more">
-
           <p>The longer write-up goes here.</p>
-
           <p><a href=https://github.com/your-username/project-two>View on GitHub</a></p>
-
         </div>
-
       </details>
-
     </div>
-
   </div>
-
- 
 
   <div class="card project-card">
-
     <img class="project-img" src="project-three.jpg" alt="Project Three screenshot">
-
     <div class="project-body">
-
-      <h3>Project Three</h3>
-
+      <h3>UVM 555 Timer Project </h3>
       <p class="entry-meta">2023</p>
-
-      <p>A short description of what the project is, what you built, and what you learned.</p>
-
+      <p>I completed this project as a design challenge for my EE1100 class at UVM. Working with Ayden Wrye we built a functional fire alarm circuit that used two 555 timers to create independent light and sound signals. The goal of this specific challenge was to integrate signals into a single, reliable emergency system that could catch someone's attention with a unique pulse and flash.</p>
       <details>
-
         <summary><span class="more-label">Read more</span></summary>
-
         <div class="project-more">
-
           <p>The longer write-up goes here.</p>
-
           <p><a href=https://github.com/your-username/project-three>View on GitHub</a></p>
-
         </div>
-
       </details>
-
     </div>
-
   </div>
-
  
 
 </div>
-
 
     </section>
 
