@@ -214,6 +214,19 @@
       color: var(--grey);
       font-size: 0.9rem;
     }
+    /* Hobbies: pictures only */
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: 1.5rem;
+    }
+    .hobby-grid img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: var(--border);
+    }
   </style>
 </head>
 <body>
@@ -250,7 +263,7 @@
           <p class="photo-links">
             <a href="mailto:brayandell17@gmail.com">Email</a>
             <a href="https://github.com/BrayanDell">GitHub</a>
-            <a href="https://https://www.linkedin.com/in/brayan-dellechiaie/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BOo3sgWY%2BTV2R%2FUNBkXmXIg%3D%3D">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/brayan-dellechiaie/">LinkedIn</a>
           </p>
         </div>
 
@@ -314,7 +327,7 @@
         <summary><span class="more-label">Read more</span></summary>
         <div class="project-more">
           <p>The longer write-up goes here.</p>
-          <p><a href=https://github.com/your-username/project-one>View on GitHub</a></p>
+          <p><a href="https://github.com/your-username/project-one">View on GitHub</a></p>
         </div>
       </details>
     </div>
@@ -330,7 +343,7 @@
         <summary><span class="more-label">Read more</span></summary>
         <div class="project-more">
           <p>The longer write-up goes here.</p>
-          <p><a href=https://github.com/your-username/project-two>View on GitHub</a></p>
+          <p><a href="https://github.com/your-username/project-two">View on GitHub</a></p>
         </div>
       </details>
     </div>
@@ -346,7 +359,7 @@
         <summary><span class="more-label">Read more</span></summary>
         <div class="project-more">
           <p>The longer write-up goes here.</p>
-          <p><a href=https://github.com/your-username/project-three>View on GitHub</a></p>
+          <p><a href="https://github.com/your-username/project-three">View on GitHub</a></p>
         </div>
       </details>
     </div>
@@ -365,19 +378,10 @@
 
       <p>I am an avid skier, hiker, and climber. Below are some photos from my adventures.</p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Hobby One</h3>
-          <p>A sentence or two about why you enjoy it.</p>
-        </div>
-        <div class="card">
-          <h3>Hobby Two</h3>
-          <p>A sentence or two about why you enjoy it.</p>
-        </div>
-        <div class="card">
-          <h3>Hobby Three</h3>
-          <p>A sentence or two about why you enjoy it.</p>
-        </div>
+      <div class="hobby-grid">
+        <img src="hobby-one.jpg" alt="Hobby One">
+        <img src="hobby-two.jpg" alt="Hobby Two">
+        <img src="hobby-three.jpg" alt="Hobby Three">
       </div>
     </section>
 
